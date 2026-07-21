@@ -571,6 +571,7 @@
            ========================================================== */
         .cg-modal-inner {
             max-width: 1000px;
+            /* 背景图已移除 */
         }
 
         .cg-title {
@@ -633,6 +634,7 @@
             transition: opacity 0.5s ease;
         }
 
+        /* 进度条区域 */
         .cg-controls {
             width: 100%;
             max-width: 900px;
@@ -699,6 +701,7 @@
            ========================================================== */
         .world-modal-inner {
             max-width: 1000px;
+            /* 背景图已移除 */
         }
 
         .world-title {
@@ -747,18 +750,15 @@
         }
 
         /* ==========================================================
-           ★ 游戏简介模态框（整合特性展示） ★
+           ★ 游戏简介模态框（手机适配优化） ★
            ========================================================== */
         .game-modal-inner {
             max-width: 1200px;
-            padding: 0;
+            padding: 1rem;
             background: rgba(10, 8, 6, 0.92);
-            overflow: hidden;
-            position: relative;
         }
 
-        /* 初始游戏介绍图容器 */
-        .game-intro-view {
+        .game-container {
             width: 100%;
             position: relative;
             border-radius: 12px;
@@ -769,12 +769,12 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .game-intro-view.show {
+        .game-container.show {
             opacity: 1;
             transform: scale(1);
         }
 
-        .game-intro-view img.bg-img {
+        .game-container img.bg-img {
             width: 100%;
             display: block;
             height: auto;
@@ -814,119 +814,12 @@
             transform: scale(0.95);
         }
 
-        /* 特性详情展示视图（覆盖整个模态框内部） */
-        .feature-detail-view {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            flex-direction: column;
-            background: #0a0b12;
-        }
-
-        .feature-detail-view.active {
-            display: flex;
-        }
-
-        .feature-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: background-image 0.5s ease-in-out;
-            z-index: 0;
-        }
-
-        .feature-nav {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 25px;
-            background: linear-gradient(180deg, rgba(10, 11, 18, 0.9) 0%, rgba(10, 11, 18, 0) 100%);
-            color: #a0a5b5;
-            border-bottom: 1px solid rgba(36, 38, 58, 0.3);
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .feature-nav-left {
-            color: #d4af37;
-            font-size: 14px;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .feature-nav-mid {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .feature-nav-mid a {
-            text-decoration: none;
-            color: #a0a5b5;
-            font-size: 14px;
-            cursor: pointer;
-            padding-bottom: 6px;
-            position: relative;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-
-        .feature-nav-mid a:hover {
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(140, 106, 255, 0.6);
-        }
-        
-        .feature-nav-mid a.active {
-            color: #ffffff;
-        }
-        
-        .feature-nav-mid a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #8c6aff;
-            box-shadow: 0 0 10px #8c6aff;
-        }
-
-        .feature-nav-right a {
-            text-decoration: none;
-            color: #a0a5b5;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-        .feature-nav-right a:hover { color: #ffffff; }
-        .feature-nav-right .arrow { margin-left: 6px; }
-
         @media (max-width: 768px) {
             .game-button-grid {
                 gap: 6px 10px;
                 bottom: 6%;
                 right: 6%;
                 width: 38%;
-            }
-            .feature-nav {
-                flex-direction: column;
-                gap: 10px;
-                padding: 10px 15px;
-            }
-            .feature-nav-mid {
-                gap: 12px;
             }
         }
 
@@ -944,27 +837,22 @@
             .game-action-btn:active {
                 transform: scale(0.95);
             }
-            .feature-nav-mid a {
-                font-size: 12px;
-            }
-            .feature-nav-left {
-                font-size: 12px;
-            }
         }
 
         /* ==========================================================
-           ★ 世界地图模态框 ★
+           ★ 世界地图模态框（新增） ★
            ========================================================== */
         .map-modal-inner {
             max-width: 1400px;
             padding: 0;
-            background: #070a10;
+            background: #070a10;  /* 与地图页背景一致 */
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(255, 215, 120, 0.15);
             box-shadow: 0 20px 80px rgba(0, 0, 0, 0.9);
         }
 
+        /* 让地图内容填满模态框 */
         .map-modal-inner .world-shell {
             width: 100%;
             height: 100%;
@@ -976,6 +864,7 @@
             color: #c5c8d4;
         }
 
+        /* 确保地图内的按钮等交互正常 */
         .map-modal-inner .map-viewport {
             width: 100%;
             height: 65vh;
@@ -986,6 +875,7 @@
             overflow: hidden;
         }
 
+        /* 地图内部样式微调，适应模态框 */
         .map-modal-inner .topbar {
             display: flex;
             justify-content: space-between;
@@ -1042,6 +932,7 @@
             color: #7a7f8f;
         }
 
+        /* 地图内部的控件按钮重设背景 */
         .map-modal-inner .map-controls button {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 215, 120, 0.2);
@@ -1116,10 +1007,109 @@
             .map-modal-inner .chapter-state { font-size: 0.65rem; }
         }
 
+        /* ===== 视频降级 ===== */
         .no-video .overlay {
             background: radial-gradient(ellipse at center, #1a100a 0%, #0a0604 80%, #030201 100%);
         }
 
+        /* ===== ★ 玩法详情模态框（背景切换演示） ★ ===== */
+        .game-detail-modal-inner {
+            max-width: 1400px;
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: none;
+            position: relative;
+        }
+
+        .game-detail-bg-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-image: url('https://raw.githubusercontent.com/Sakumoto788/worldmap/main/01.png');
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out;
+            z-index: 0;
+        }
+
+        .game-detail-nav-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 25px 40px;
+            background: linear-gradient(180deg, rgba(10, 11, 18, 0.8) 0%, rgba(10, 11, 18, 0) 100%);
+            color: #a0a5b5;
+            border-bottom: 1px solid rgba(36, 38, 58, 0.3);
+            gap: 30px;
+        }
+
+        .game-detail-nav-left {
+            color: #d4af37;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .game-detail-nav-mid {
+            display: flex;
+            gap: 30px;
+        }
+
+        .game-detail-nav-mid a {
+            text-decoration: none;
+            color: #a0a5b5;
+            font-size: 15px;
+            cursor: pointer;
+            padding-bottom: 8px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .game-detail-nav-mid a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(140, 106, 255, 0.6);
+        }
+
+        .game-detail-nav-mid a.active {
+            color: #ffffff;
+        }
+
+        .game-detail-nav-mid a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #8c6aff;
+            box-shadow: 0 0 10px #8c6aff;
+        }
+
+        .game-detail-nav-right a {
+            text-decoration: none;
+            color: #a0a5b5;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .game-detail-nav-right a:hover { color: #ffffff; }
+        .game-detail-nav-right .arrow { margin-left: 6px; }
+
+        @media (max-width: 768px) {
+            .game-detail-nav-container { flex-direction: column; gap: 15px; padding: 15px;}
+            .game-detail-nav-mid { flex-wrap: wrap; justify-content: center; gap: 15px;}
+        }
+
+        /* ===== 悬停彩蛋 ===== */
         @media (hover: hover) {
             .title:hover {
                 animation-play-state: paused;
@@ -1131,40 +1121,60 @@
 </head>
 <body>
 
-    <!-- 视频背景 -->
+    <!-- ==========================================================
+    视频背景
+    ========================================================== -->
     <video id="bgVideo" autoplay muted loop playsinline preload="auto">
         <source src="http://tih8qixrg.hn-bkt.clouddn.com/op1" type="video/mp4" />
+        您的浏览器不支持 HTML5 视频。
     </video>
 
+    <!-- 高光层 -->
     <div class="highlight"></div>
+
+    <!-- 遮罩层 -->
     <div class="overlay"></div>
 
-    <!-- 主内容 -->
+    <!-- ==========================================================
+    主内容
+    ========================================================== -->
     <div class="content">
         <div class="divider-top"></div>
         <h1 class="title">诸天纪元</h1>
         <div class="divider-bottom"></div>
         <p class="subtitle">—— 一部横跨诸天的群像史诗 ——</p>
 
+        <!-- ★ 按钮组：纵向排列 ★ -->
         <div class="btn-group">
             <button class="btn-common" id="openCharModal">✦ 人物志 ✦</button>
             <button class="btn-common" id="openCgModal">✦ 剧情CG欣赏 ✦</button>
             <button class="btn-common" id="openWorldModal">✦ 世界观 ✦</button>
             <button class="btn-common" id="openGameModal">✦ 游戏简介 ✦</button>
+            <!-- ★ 新增：世界地图 ★ -->
             <button class="btn-common" id="openWorldMapModal">✦ 世界地图 ✦</button>
         </div>
     </div>
 
+    <!-- ==========================================================
+    作者 — 右下角落款
+    ========================================================== -->
     <div class="author-wrapper">
         <div class="author-seal">老九<br />门印</div>
         <div class="author-name">老 九 门</div>
         <div class="author-sub">· 玄 天 之 笔 ·</div>
     </div>
 
+    <!-- ==========================================================
+    ★ 背景视频暂停/播放按钮（左下角）
+    ========================================================== -->
     <button id="bgToggleBtn" title="暂停/播放背景">⏸</button>
+
+    <!-- 底部版权 -->
     <div class="footer">✦ 万 界 之 上 · 纪 元 之 始 ✦</div>
 
-    <!-- 人物志模态框 -->
+    <!-- ==========================================================
+    ★ 人物志模态框 ★
+    ========================================================== -->
     <div class="modal-overlay" id="charModal">
         <div class="modal-inner char-modal-inner">
             <span class="modal-close" id="closeCharModal">✕</span>
@@ -1185,7 +1195,9 @@
         </div>
     </div>
 
-    <!-- 剧情CG欣赏模态框 -->
+    <!-- ==========================================================
+    ★ 剧情CG欣赏模态框（含进度条） ★
+    ========================================================== -->
     <div class="modal-overlay" id="cgModal">
         <div class="modal-inner cg-modal-inner">
             <span class="modal-close" id="closeCgModal">✕</span>
@@ -1193,6 +1205,7 @@
             <div class="cg-video-wrapper" id="cgVideoWrapper">
                 <video id="cgVideo" preload="metadata">
                     <source src="http://tih8qixrg.hn-bkt.clouddn.com/Zubeiwar.mp4" type="video/mp4" />
+                    您的浏览器不支持视频播放。
                 </video>
                 <div class="cg-play-btn" id="cgPlayBtn">▶</div>
             </div>
@@ -1205,7 +1218,9 @@
         </div>
     </div>
 
-    <!-- 世界观模态框 -->
+    <!-- ==========================================================
+    ★ 世界观模态框 ★
+    ========================================================== -->
     <div class="modal-overlay" id="worldModal">
         <div class="modal-inner world-modal-inner">
             <span class="modal-close" id="closeWorldModal">✕</span>
@@ -1217,53 +1232,39 @@
         </div>
     </div>
 
-    <!-- 游戏简介模态框（整合特性展示） -->
+    <!-- ==========================================================
+    ★ 游戏简介模态框 ★
+    ========================================================== -->
     <div class="modal-overlay" id="gameModal">
         <div class="modal-inner game-modal-inner">
             <span class="modal-close" id="closeGameModal">✕</span>
-
-            <!-- 初始游戏介绍视图 -->
-            <div class="game-intro-view" id="gameIntroView">
+            <div class="game-container" id="gameContainer">
                 <img class="bg-img" src="https://raw.githubusercontent.com/Sakumoto788/wenjianzhutian/71980d3700b13a806969909bfb95d675236157b9/gameguide1.jpg" alt="诸天纪元游戏介绍">
                 <div class="game-button-grid">
-                    <button class="game-action-btn" data-feature="1">
+                    <button class="game-action-btn" onclick="handleGameClick('调查与推理')">
                         <img src="https://raw.githubusercontent.com/Sakumoto788/wenjianzhutian/53669afec6c094b6cb2720840f01249d7addd8e0/%E8%B0%83%E6%9F%A5%E4%B8%8E%E6%8E%A8%E7%90%86.png" alt="调查与推理">
                     </button>
-                    <button class="game-action-btn" data-feature="2">
+                    <button class="game-action-btn" onclick="handleGameClick('生存与成长')">
                         <img src="https://raw.githubusercontent.com/Sakumoto788/wenjianzhutian/53669afec6c094b6cb2720840f01249d7addd8e0/02_%E8%AF%B8%E5%A4%A9%E7%BA%AA%E5%85%83_%E6%B8%B8%E6%88%8F%E7%AE%80%E4%BB%8B_%E6%96%87%E5%AD%97%E7%89%88.png" alt="生存与成长">
                     </button>
-                    <button class="game-action-btn" data-feature="3">
+                    <button class="game-action-btn" onclick="handleGameClick('团队战斗')">
                         <img src="https://raw.githubusercontent.com/Sakumoto788/wenjianzhutian/53669afec6c094b6cb2720840f01249d7addd8e0/%E5%9B%A2%E9%98%9F%E6%88%98%E6%96%97.png" alt="团队战斗">
                     </button>
-                    <button class="game-action-btn" data-feature="4">
+                    <button class="game-action-btn" onclick="handleGameClick('动态因果')">
                         <img src="https://raw.githubusercontent.com/Sakumoto788/wenjianzhutian/53669afec6c094b6cb2720840f01249d7addd8e0/active.png" alt="动态因果">
                     </button>
-                </div>
-            </div>
-
-            <!-- 特性详情视图（背景图+导航） -->
-            <div class="feature-detail-view" id="featureDetailView">
-                <div class="feature-bg" id="featureBg"></div>
-                <div class="feature-nav">
-                    <div class="feature-nav-left">诸天纪元 FEATURE ARCHIVE</div>
-                    <div class="feature-nav-mid" id="featureNavMid">
-                        <a href="javascript:void(0)" data-feature="1" class="active">调查与推理</a>
-                        <a href="javascript:void(0)" data-feature="2">生存与成长</a>
-                        <a href="javascript:void(0)" data-feature="3">团队战斗</a>
-                        <a href="javascript:void(0)" data-feature="4">动态因果</a>
-                    </div>
-                    <div class="feature-nav-right">
-                        <a href="javascript:void(0)" id="backToGameIntro">返回游戏简介 <span class="arrow">→</span></a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 世界地图模态框 -->
+    <!-- ==========================================================
+    ★ 世界地图模态框（新增） ★
+    ========================================================== -->
     <div class="modal-overlay" id="worldMapModal">
         <div class="modal-inner map-modal-inner">
             <span class="modal-close" id="closeWorldMapModal">✕</span>
+            <!-- 直接嵌入地图页面的内容 -->
             <main class="world-shell">
                 <header class="topbar">
                     <div class="brand-lockup">
@@ -1277,18 +1278,28 @@
                         <span class="state-safe"><i></i>至少安全两夜</span>
                     </div>
                 </header>
+
                 <section class="map-section" aria-label="诸天纪元世界地图">
                     <div class="map-heading">
                         <span class="eyebrow">WORLD MAP · CANON V1.0</span>
                         <h1>诸天巡界图</h1>
                         <p>拖动山河，滚轮缩放；点击地点，查阅正史档案。</p>
                     </div>
+
                     <div id="filterRail" class="filter-rail" aria-label="地图地点筛选"></div>
-                    <div id="mapViewport" class="map-viewport" tabindex="0" role="application" aria-label="可拖拽与缩放的诸天纪元地图；方向键平移，加减键缩放">
+
+                    <div
+                        id="mapViewport"
+                        class="map-viewport"
+                        tabindex="0"
+                        role="application"
+                        aria-label="可拖拽与缩放的诸天纪元地图；方向键平移，加减键缩放"
+                    >
                         <div id="mapCanvas" class="map-canvas">
                             <div class="map-art"></div>
                             <div class="map-vignette"></div>
                             <div class="map-grid"></div>
+
                             <svg id="routeLayer" class="route-layer" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                                 <defs>
                                     <filter id="routeGlow" x="-20%" y="-20%" width="140%" height="140%">
@@ -1302,24 +1313,30 @@
                                 <polyline class="route route--risk" points="82,28 92,20" filter="url(#routeGlow)"></polyline>
                                 <polyline class="route route--unknown" points="82,28 94,48" filter="url(#routeGlow)"></polyline>
                             </svg>
+
                             <div id="markerLayer" class="marker-layer"></div>
                         </div>
+
                         <button id="gestureGuide" class="gesture-guide" type="button">
                             <span class="gesture-icon" aria-hidden="true">✣</span>
                             <span><strong>拖动探索地图</strong><small>滚轮或双指可缩放</small></span>
                         </button>
+
                         <div class="map-controls" aria-label="地图控制">
                             <button id="zoomIn" type="button" aria-label="放大地图">＋</button>
                             <span id="zoomValue">100%</span>
                             <button id="zoomOut" type="button" aria-label="缩小地图">−</button>
                             <button id="resetView" type="button" class="control-reset" aria-label="重置地图视图">归位</button>
                         </div>
+
                         <div class="layer-controls" aria-label="地图图层">
                             <span>图层</span>
                             <button id="toggleRoutes" type="button" class="is-on" aria-pressed="true"><i></i>足迹路线</button>
                             <button id="toggleLabels" type="button" class="is-on" aria-pressed="true"><i></i>地点名</button>
                         </div>
+
                         <div class="compass" aria-hidden="true"><span>北</span><i></i><small>N</small></div>
+
                         <div class="map-legend" aria-label="地图图例">
                             <span><i class="legend-explored"></i>已探索</span>
                             <span><i class="legend-current"></i>当前位置</span>
@@ -1327,21 +1344,47 @@
                             <span><i class="legend-unknown"></i>未确认</span>
                         </div>
                     </div>
+
                     <aside id="locationDrawer" class="location-drawer" aria-live="polite"></aside>
                 </section>
             </main>
         </div>
     </div>
 
+    <!-- ==========================================================
+    ★ 玩法详情模态框（背景切换演示） ★
+    ========================================================== -->
+    <div class="modal-overlay" id="gameDetailModal">
+        <div class="modal-inner game-detail-modal-inner">
+            <span class="modal-close" id="closeGameDetailModal">✕</span>
+            <div class="game-detail-bg-container" id="gameDetailBgContainer"></div>
+            <div class="game-detail-nav-container">
+                <div class="game-detail-nav-mid" id="gameDetailNavMid">
+                    <a href="javascript:void(0)" onclick="switchGameDetail(1)" class="active" id="detailTab1">调查与推理</a>
+                    <a href="javascript:void(0)" onclick="switchGameDetail(2)" id="detailTab2">生存与成长</a>
+                    <a href="javascript:void(0)" onclick="switchGameDetail(3)" id="detailTab3">团队战斗</a>
+                    <a href="javascript:void(0)" onclick="switchGameDetail(4)" id="detailTab4">动态因果</a>
+                </div>
+                <div class="game-detail-nav-right">
+                    <a href="javascript:void(0)" onclick="backToGameIntro()">返回游戏简介 <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+    JavaScript 控制
+    ========================================================== -->
     <script>
         (function() {
             'use strict';
 
-            // ---------- 背景视频 ----------
+            // ---------- 获取视频元素 ----------
             const bgVideo = document.getElementById('bgVideo');
             const cgVideo = document.getElementById('cgVideo');
             const body = document.body;
 
+            // ---------- 背景视频控制 ----------
             function tryPlayBgVideo() {
                 if (!bgVideo) return;
                 bgVideo.play().catch(function(err) {
@@ -1357,7 +1400,9 @@
                 document.addEventListener('click', function enable() {
                     if (bgVideo) {
                         bgVideo.muted = false;
-                        if (bgVideo.paused) bgVideo.play().catch(function() {});
+                        if (bgVideo.paused) {
+                            bgVideo.play().catch(function() {});
+                        }
                     }
                     document.removeEventListener('click', enable);
                 }, { once: true });
@@ -1365,10 +1410,13 @@
 
             bgVideo.addEventListener('error', function() {
                 body.classList.add('no-video');
+                console.log('背景视频加载失败，使用纯色背景降级。');
             });
 
             setTimeout(function() {
-                if (bgVideo.readyState === 0) body.classList.add('no-video');
+                if (bgVideo.readyState === 0) {
+                    body.classList.add('no-video');
+                }
             }, 4000);
 
             if (document.readyState === 'complete') {
@@ -1387,7 +1435,11 @@
                 }
             });
 
-            // 背景视频暂停/播放按钮
+            document.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+            }, { passive: false });
+
+            // ---------- ★ 背景视频暂停/播放开关 ----------
             const bgToggleBtn = document.getElementById('bgToggleBtn');
             bgToggleBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -1413,24 +1465,43 @@
                 bgToggleBtn.title = '播放背景';
             });
 
-            // CG视频与背景视频联动
+            // ---------- ★ 核心功能：CG视频与背景视频联动 ★ ----------
             function pauseBgVideo() {
-                if (bgVideo && !bgVideo.paused) bgVideo.pause();
-            }
-            function resumeBgVideo() {
-                if (bgVideo && bgVideo.paused) bgVideo.play().catch(function(e) {});
+                if (bgVideo && !bgVideo.paused) {
+                    bgVideo.pause();
+                    console.log('背景视频已暂停（CG开始播放）');
+                }
             }
 
-            cgVideo.addEventListener('play', pauseBgVideo);
-            cgVideo.addEventListener('pause', function() {
-                if (!cgVideo.ended) resumeBgVideo();
+            function resumeBgVideo() {
+                if (bgVideo && bgVideo.paused) {
+                    bgVideo.play().catch(function(e) {
+                        console.log('恢复背景视频失败:', e);
+                    });
+                    console.log('背景视频已恢复（CG暂停/结束）');
+                }
+            }
+
+            cgVideo.addEventListener('play', function() {
+                pauseBgVideo();
             });
+
+            cgVideo.addEventListener('pause', function() {
+                if (!cgVideo.ended) {
+                    resumeBgVideo();
+                }
+            });
+
             cgVideo.addEventListener('ended', function() {
                 resumeBgVideo();
                 updateCgPlayBtn();
             });
 
-            // CG进度条
+            cgVideo.addEventListener('error', function() {
+                console.log('CG视频加载失败，请检查链接');
+            });
+
+            // ---------- ★ CG进度条 ----------
             const cgProgress = document.getElementById('cgProgress');
             const cgCurrentTime = document.getElementById('cgCurrentTime');
             const cgDuration = document.getElementById('cgDuration');
@@ -1455,6 +1526,7 @@
                 cgDuration.textContent = formatTime(cgVideo.duration);
                 cgProgress.max = 100;
             });
+
             cgVideo.addEventListener('timeupdate', updateProgress);
 
             cgProgress.addEventListener('input', function() {
@@ -1465,24 +1537,60 @@
                 }
             });
 
-            // 人物志数据
-            const characters = [
-                { name: '幸格', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/01-xingge.webp' },
-                { name: '史迪', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/02-shidi.webp' },
-                { name: '晨曦', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/03-chenxi.webp' },
-                { name: '生枫', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/06-shengfeng.webp' },
-                { name: '阿怪', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/04-aguai.webp' },
-                { name: '雪月', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/05-xueyue.webp' },
-                { name: '青禾', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/07-qinghe.webp' },
-                { name: '青石村村长', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/08-village-chief.webp' },
-                { name: '周守山', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/09-zhou-shoushan.webp' },
-                { name: '顾寒舟', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/10-gu-hanzhou.webp' },
-                { name: '韩照', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/11-han-zhao.webp' },
-                { name: '记户吏', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/13-household-clerk.webp' },
-                { name: '陆沉', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/14-lu-chen.webp' },
-                { name: '苏闻星', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/15-su-wenxing.webp' },
-                { name: '无名引路人', detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/16-nameless-guide.webp' }
-            ];
+            cgProgress.addEventListener('change', function() {
+                if (cgVideo.duration && !isNaN(cgVideo.duration)) {
+                    const seekTime = (cgProgress.value / 100) * cgVideo.duration;
+                    cgVideo.currentTime = seekTime;
+                }
+            });
+
+            // ---------- 人物志数据 ----------
+            const characters = [{
+                name: '幸格',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/01-xingge.webp'
+            }, {
+                name: '史迪',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/02-shidi.webp'
+            }, {
+                name: '晨曦',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/03-chenxi.webp'
+            }, {
+                name: '生枫',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/06-shengfeng.webp'
+            }, {
+                name: '阿怪',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/04-aguai.webp'
+            }, {
+                name: '雪月',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/05-xueyue.webp'
+            }, {
+                name: '青禾',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/07-qinghe.webp'
+            }, {
+                name: '青石村村长',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/08-village-chief.webp'
+            }, {
+                name: '周守山',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/09-zhou-shoushan.webp'
+            }, {
+                name: '顾寒舟',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/10-gu-hanzhou.webp'
+            }, {
+                name: '韩照',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/11-han-zhao.webp'
+            }, {
+                name: '记户吏',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/13-household-clerk.webp'
+            }, {
+                name: '陆沉',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/14-lu-chen.webp'
+            }, {
+                name: '苏闻星',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/15-su-wenxing.webp'
+            }, {
+                name: '无名引路人',
+                detailImage: 'https://raw.githubusercontent.com/Sakumoto788/zhutian/c6184508797203de8299159da9df0565f6ca8d71/16-nameless-guide.webp'
+            }];
 
             const avatarLinks = [
                 'https://raw.githubusercontent.com/Sakumoto788/zhutian/25ea0062a57cea2a92511331e26aa3485393a4e2/xeeg.png',
@@ -1502,7 +1610,9 @@
                 'https://raw.githubusercontent.com/Sakumoto788/zhutian/25ea0062a57cea2a92511331e26aa3485393a4e2/wuming.png'
             ];
 
+            // ---------- 渲染人物志 ----------
             const gallery = document.getElementById('charGallery');
+            gallery.innerHTML = '';
             characters.forEach((char, index) => {
                 const item = document.createElement('div');
                 item.className = 'char-item';
@@ -1518,12 +1628,14 @@
                 gallery.appendChild(item);
             });
 
+            // ---------- 人物志导航箭头 ----------
             const scrollLeftBtn = document.getElementById('scrollLeft');
             const scrollRightBtn = document.getElementById('scrollRight');
 
             function scrollGallery(direction) {
                 const scrollAmount = gallery.clientWidth * 0.7;
-                gallery.scrollTo({ left: gallery.scrollLeft + direction * scrollAmount, behavior: 'smooth' });
+                const targetScroll = gallery.scrollLeft + direction * scrollAmount;
+                gallery.scrollTo({ left: targetScroll, behavior: 'smooth' });
             }
 
             scrollLeftBtn.addEventListener('click', function(e) {
@@ -1555,7 +1667,7 @@
                 resizeTimer = setTimeout(updateArrows, 100);
             });
 
-            // 人物志模态框
+            // ---------- 人物志模态框控制 ----------
             const charModal = document.getElementById('charModal');
             const openCharBtn = document.getElementById('openCharModal');
             const closeCharBtn = document.getElementById('closeCharModal');
@@ -1606,7 +1718,7 @@
                 if (e.target === charModal) closeCharModalFn();
             });
 
-            // CG视频控制
+            // ---------- ★ 剧情CG视频控制 ★ ----------
             const cgModal = document.getElementById('cgModal');
             const openCgBtn = document.getElementById('openCgModal');
             const closeCgBtn = document.getElementById('closeCgModal');
@@ -1625,7 +1737,9 @@
 
             function toggleCgPlay() {
                 if (cgVideo.paused) {
-                    cgVideo.play().catch(function(e) {});
+                    cgVideo.play().catch(function(e) {
+                        console.log('CG视频播放被阻止:', e);
+                    });
                 } else {
                     cgVideo.pause();
                 }
@@ -1637,9 +1751,15 @@
                 toggleCgPlay();
             });
 
-            cgVideo.addEventListener('play', updateCgPlayBtn);
-            cgVideo.addEventListener('pause', updateCgPlayBtn);
-            cgVideo.addEventListener('ended', updateCgPlayBtn);
+            cgVideo.addEventListener('play', function() {
+                updateCgPlayBtn();
+            });
+            cgVideo.addEventListener('pause', function() {
+                updateCgPlayBtn();
+            });
+            cgVideo.addEventListener('ended', function() {
+                updateCgPlayBtn();
+            });
 
             function openCgModalFn() {
                 cgModal.classList.add('active');
@@ -1654,34 +1774,56 @@
 
             function closeCgModalFn() {
                 cgModal.classList.remove('active');
-                if (cgVideo && !cgVideo.paused) cgVideo.pause();
-                if (bgVideo && bgVideo.paused) bgVideo.play().catch(function() {});
+                if (cgVideo && !cgVideo.paused) {
+                    cgVideo.pause();
+                }
+                if (bgVideo && bgVideo.paused) {
+                    bgVideo.play().catch(function() {});
+                }
             }
 
             openCgBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 openCgModalFn();
             });
+
             closeCgBtn.addEventListener('click', closeCgModalFn);
+
             cgModal.addEventListener('click', function(e) {
                 if (e.target === cgModal) closeCgModalFn();
             });
 
-            // 世界观控制
+            // ---------- ★ 世界观控制 ★ ----------
             const worldModal = document.getElementById('worldModal');
             const openWorldBtn = document.getElementById('openWorldModal');
             const closeWorldBtn = document.getElementById('closeWorldModal');
             const worldImageWrapper = document.getElementById('worldImageWrapper');
             const worldImage = document.getElementById('worldImage');
 
+            let worldImageLoaded = false;
+
             function openWorldModalFn() {
                 worldModal.classList.add('active');
                 worldImageWrapper.classList.remove('show');
                 if (worldImage.complete && worldImage.naturalWidth > 0) {
-                    setTimeout(() => worldImageWrapper.classList.add('show'), 50);
+                    setTimeout(function() {
+                        worldImageWrapper.classList.add('show');
+                    }, 50);
                 } else {
-                    worldImage.onload = () => setTimeout(() => worldImageWrapper.classList.add('show'), 50);
-                    worldImage.onerror = () => setTimeout(() => worldImageWrapper.classList.add('show'), 50);
+                    worldImage.onload = function() {
+                        setTimeout(function() {
+                            worldImageWrapper.classList.add('show');
+                        }, 50);
+                    };
+                    worldImage.onerror = function() {
+                        console.log('世界观图片加载失败，请检查链接');
+                        setTimeout(function() {
+                            worldImageWrapper.classList.add('show');
+                        }, 50);
+                    };
+                }
+                if (worldImageLoaded && worldImage.naturalWidth === 0) {
+                    worldImage.src = worldImage.src;
                 }
             }
 
@@ -1694,93 +1836,41 @@
                 e.stopPropagation();
                 openWorldModalFn();
             });
+
             closeWorldBtn.addEventListener('click', closeWorldModalFn);
+
             worldModal.addEventListener('click', function(e) {
                 if (e.target === worldModal) closeWorldModalFn();
             });
+
             worldImageWrapper.addEventListener('click', function(e) {
-                if (e.target === worldImageWrapper || e.target === worldImage) closeWorldModalFn();
+                if (e.target === worldImageWrapper || e.target === worldImage) {
+                    closeWorldModalFn();
+                }
             });
 
-            // ================= 游戏简介与特性展示整合 =================
+            worldImage.addEventListener('load', function() {
+                worldImageLoaded = true;
+            });
+
+            // ---------- ★ 游戏简介控制 ★ ----------
             const gameModal = document.getElementById('gameModal');
             const openGameBtn = document.getElementById('openGameModal');
             const closeGameBtn = document.getElementById('closeGameModal');
-            const gameIntroView = document.getElementById('gameIntroView');
-            const featureDetailView = document.getElementById('featureDetailView');
-            const featureBg = document.getElementById('featureBg');
-            const featureNavLinks = document.querySelectorAll('#featureNavMid a');
-            const backToGameIntroBtn = document.getElementById('backToGameIntro');
+            const gameContainer = document.getElementById('gameContainer');
 
-            // 特性背景图
-            const featureImages = {
-                1: 'https://raw.githubusercontent.com/Sakumoto788/worldmap/main/01.png',
-                2: 'https://raw.githubusercontent.com/Sakumoto788/worldmap/main/02.png',
-                3: 'https://raw.githubusercontent.com/Sakumoto788/worldmap/main/03.png',
-                4: 'https://raw.githubusercontent.com/Sakumoto788/worldmap/main/04.png'
-            };
-
-            let currentFeature = 1;
-
-            // 切换到特性视图
-            function showFeatureDetail(featureIndex) {
-                currentFeature = featureIndex;
-                gameIntroView.style.display = 'none';
-                featureDetailView.classList.add('active');
-                featureBg.style.backgroundImage = `url('${featureImages[featureIndex]}')`;
-
-                // 更新导航高亮
-                featureNavLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (parseInt(link.dataset.feature) === featureIndex) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-
-            // 返回游戏介绍视图
-            function backToGameIntro() {
-                featureDetailView.classList.remove('active');
-                gameIntroView.style.display = 'block';
-                // 重新触发动画
-                gameIntroView.classList.remove('show');
-                void gameIntroView.offsetWidth;
-                gameIntroView.classList.add('show');
-            }
-
-            // 游戏介绍按钮点击
-            document.querySelectorAll('.game-action-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const feature = parseInt(this.dataset.feature);
-                    if (feature) showFeatureDetail(feature);
-                });
-            });
-
-            // 特性导航点击
-            featureNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const feature = parseInt(this.dataset.feature);
-                    if (feature) showFeatureDetail(feature);
-                });
-            });
-
-            // 返回游戏简介按钮
-            backToGameIntroBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                backToGameIntro();
-            });
-
-            // 打开游戏简介模态框
             function openGameModalFn() {
                 gameModal.classList.add('active');
-                // 重置到游戏介绍视图
-                backToGameIntro();
+                gameContainer.classList.remove('show');
+                void gameContainer.offsetWidth;
+                setTimeout(function() {
+                    gameContainer.classList.add('show');
+                }, 50);
             }
 
             function closeGameModalFn() {
                 gameModal.classList.remove('active');
+                gameContainer.classList.remove('show');
             }
 
             openGameBtn.addEventListener('click', function(e) {
@@ -1794,13 +1884,29 @@
                 if (e.target === gameModal) closeGameModalFn();
             });
 
-            // 世界地图模态框
+            // 游戏按钮点击处理
+            window.handleGameClick = function(buttonName) {
+                const indexMap = {
+                    '调查与推理': 1,
+                    '生存与成长': 2,
+                    '团队战斗': 3,
+                    '动态因果': 4
+                };
+                const pageIndex = indexMap[buttonName] || 1;
+                openGameDetailModalFn(pageIndex);
+            };
+
+            // ---------- ★ 世界地图控制 ★ ----------
             const worldMapModal = document.getElementById('worldMapModal');
             const openWorldMapBtn = document.getElementById('openWorldMapModal');
             const closeWorldMapBtn = document.getElementById('closeWorldMapModal');
 
             function openWorldMapModalFn() {
                 worldMapModal.classList.add('active');
+                // 如果地图脚本需要重新初始化，可以在这里触发
+                // 例如：window.dispatchEvent(new Event('resize'));
+                // 或者调用地图的刷新方法（如果有）
+                console.log('世界地图已打开');
             }
 
             function closeWorldMapModalFn() {
@@ -1818,7 +1924,53 @@
                 if (e.target === worldMapModal) closeWorldMapModalFn();
             });
 
-            // ESC 全局关闭
+            // ---------- ★ 玩法详情模态框控制（背景切换演示） ★ ----------
+            const gameDetailModal = document.getElementById('gameDetailModal');
+            const closeGameDetailBtn = document.getElementById('closeGameDetailModal');
+            const gameDetailBgContainer = document.getElementById('gameDetailBgContainer');
+
+            const gameDetailImages = {
+                1: 'https://raw.githubusercontent.com/Sakumoto788/worldmap/main/01.png',
+                2: 'https://raw.githubusercontent.com/Sakumoto788/worldmap/main/02.png',
+                3: 'https://raw.githubusercontent.com/Sakumoto788/worldmap/main/03.png',
+                4: 'https://raw.githubusercontent.com/Sakumoto788/worldmap/main/04.png'
+            };
+
+            function openGameDetailModalFn(pageIndex) {
+                gameDetailModal.classList.add('active');
+                switchGameDetail(pageIndex);
+            }
+
+            function closeGameDetailModalFn() {
+                gameDetailModal.classList.remove('active');
+            }
+
+            window.backToGameIntro = function() {
+                gameDetailModal.classList.remove('active');
+                gameModal.classList.add('active');
+                gameContainer.classList.remove('show');
+                void gameContainer.offsetWidth;
+                setTimeout(function() {
+                    gameContainer.classList.add('show');
+                }, 50);
+            };
+
+            window.switchGameDetail = function(pageIndex) {
+                const bgContainer = document.getElementById('gameDetailBgContainer');
+                bgContainer.style.backgroundImage = `url('${gameDetailImages[pageIndex]}')`;
+
+                const tabs = document.querySelectorAll('.game-detail-nav-mid a');
+                tabs.forEach(tab => tab.classList.remove('active'));
+                document.getElementById(`detailTab${pageIndex}`).classList.add('active');
+            };
+
+            closeGameDetailBtn.addEventListener('click', closeGameDetailModalFn);
+
+            gameDetailModal.addEventListener('click', function(e) {
+                if (e.target === gameDetailModal) closeGameDetailModalFn();
+            });
+
+            // ---------- ESC 键关闭 ----------
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     if (charModal.classList.contains('active')) {
@@ -1831,20 +1983,17 @@
                         closeCgModalFn();
                     } else if (worldModal.classList.contains('active')) {
                         closeWorldModalFn();
+                    } else if (gameDetailModal.classList.contains('active')) {
+                        closeGameDetailModalFn();
                     } else if (gameModal.classList.contains('active')) {
-                        // 如果正在特性详情，先返回游戏介绍，否则关闭整个模态框
-                        if (featureDetailView.classList.contains('active')) {
-                            backToGameIntro();
-                        } else {
-                            closeGameModalFn();
-                        }
+                        closeGameModalFn();
                     } else if (worldMapModal.classList.contains('active')) {
                         closeWorldMapModalFn();
                     }
                 }
             });
 
-            // 键盘左右翻页（人物志）
+            // 键盘左右键翻页（人物志列表可见时）
             document.addEventListener('keydown', function(e) {
                 if (!charModal.classList.contains('active')) return;
                 if (charDetailView.classList.contains('active')) return;
@@ -1857,8 +2006,11 @@
                 }
             });
 
-            console.log('✦ 诸天纪元 · 全部功能加载完成 ✦');
+            console.log('✦ 诸天纪元 · 全部功能（含世界地图）加载完成 ✦');
+            console.log('★ 作者：老九门 ★');
+
         })();
     </script>
+
 </body>
 </html>
