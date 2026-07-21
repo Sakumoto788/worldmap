@@ -1105,8 +1105,57 @@
         .game-detail-nav-right .arrow { margin-left: 6px; }
 
         @media (max-width: 768px) {
-            .game-detail-nav-container { flex-direction: column; gap: 15px; padding: 15px;}
-            .game-detail-nav-mid { flex-wrap: wrap; justify-content: center; gap: 15px;}
+            .game-detail-nav-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px 20px;
+                justify-content: center;
+            }
+            .game-detail-nav-mid {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .game-detail-nav-mid a {
+                font-size: 14px;
+                padding-bottom: 6px;
+            }
+            .game-detail-nav-right a {
+                font-size: 13px;
+            }
+            .game-detail-bg-container {
+                max-height: 50vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-detail-nav-container {
+                padding: 12px 15px;
+                gap: 10px;
+            }
+            .game-detail-nav-mid {
+                gap: 10px;
+            }
+            .game-detail-nav-mid a {
+                font-size: 12px;
+                padding-bottom: 4px;
+            }
+            .game-detail-nav-right a {
+                font-size: 11px;
+            }
+            .game-detail-bg-container {
+                max-height: 40vh;
+            }
+        }
+
+        @media (hover: none) {
+            .game-detail-nav-mid a:active {
+                color: #ffffff;
+                text-shadow: 0 0 8px rgba(140, 106, 255, 0.6);
+            }
+            .game-detail-nav-right a:active {
+                color: #ffffff;
+            }
         }
 
         /* ===== 悬停彩蛋 ===== */
