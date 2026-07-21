@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070a10" />
+    <title>诸天纪元 · 诸天巡界图</title>
+    <link rel="stylesheet" href="./map.css" />
+  </head>
+  <body>
+    <main class="world-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="brand-name">诸天纪元</span>
+          <span class="brand-rule"></span>
+          <span class="brand-en">WORLD ARCHIVE</span>
+        </div>
+        <div class="chapter-state" aria-label="当前剧情进度">
+          <span class="state-eyebrow">当前纪行</span>
+          <strong>北岭旧哨 · 第 4 / 15 轮</strong>
+          <span class="state-safe"><i></i>至少安全两夜</span>
+        </div>
+      </header>
+
+      <section class="map-section" aria-label="诸天纪元世界地图">
+        <div class="map-heading">
+          <span class="eyebrow">WORLD MAP · CANON V1.0</span>
+          <h1>诸天巡界图</h1>
+          <p>拖动山河，滚轮缩放；点击地点，查阅正史档案。</p>
+        </div>
+
+        <div id="filterRail" class="filter-rail" aria-label="地图地点筛选"></div>
+
+        <div
+          id="mapViewport"
+          class="map-viewport"
+          tabindex="0"
+          role="application"
+          aria-label="可拖拽与缩放的诸天纪元地图；方向键平移，加减键缩放"
+        >
+          <div id="mapCanvas" class="map-canvas">
+            <div class="map-art"></div>
+            <div class="map-vignette"></div>
+            <div class="map-grid"></div>
+
+            <svg id="routeLayer" class="route-layer" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <filter id="routeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="0.35" result="blur"></feGaussianBlur>
+                  <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+                </filter>
+              </defs>
+              <polyline class="route route--history" points="14,73 20,48 32,61 26,72 42,42 55,56" filter="url(#routeGlow)"></polyline>
+              <polyline class="route route--branch" points="55,56 58,79 68,76 72,60 43,80 55,56" filter="url(#routeGlow)"></polyline>
+              <polyline class="route route--current" points="55,56 70,40 82,28" filter="url(#routeGlow)"></polyline>
+              <polyline class="route route--risk" points="82,28 92,20" filter="url(#routeGlow)"></polyline>
+              <polyline class="route route--unknown" points="82,28 94,48" filter="url(#routeGlow)"></polyline>
+            </svg>
+
+            <div id="markerLayer" class="marker-layer"></div>
+          </div>
+
+          <button id="gestureGuide" class="gesture-guide" type="button">
+            <span class="gesture-icon" aria-hidden="true">✣</span>
+            <span><strong>拖动探索地图</strong><small>滚轮或双指可缩放</small></span>
+          </button>
+
+          <div class="map-controls" aria-label="地图控制">
+            <button id="zoomIn" type="button" aria-label="放大地图">＋</button>
+            <span id="zoomValue">100%</span>
+            <button id="zoomOut" type="button" aria-label="缩小地图">−</button>
+            <button id="resetView" type="button" class="control-reset" aria-label="重置地图视图">归位</button>
+          </div>
+
+          <div class="layer-controls" aria-label="地图图层">
+            <span>图层</span>
+            <button id="toggleRoutes" type="button" class="is-on" aria-pressed="true"><i></i>足迹路线</button>
+            <button id="toggleLabels" type="button" class="is-on" aria-pressed="true"><i></i>地点名</button>
+          </div>
+
+          <div class="compass" aria-hidden="true"><span>北</span><i></i><small>N</small></div>
+
+          <div class="map-legend" aria-label="地图图例">
+            <span><i class="legend-explored"></i>已探索</span>
+            <span><i class="legend-current"></i>当前位置</span>
+            <span><i class="legend-danger"></i>高危</span>
+            <span><i class="legend-unknown"></i>未确认</span>
+          </div>
+        </div>
+
+        <aside id="locationDrawer" class="location-drawer" aria-live="polite"></aside>
+      </section>
+    </main>
+
+    <script src="./map-data.js"></script>
+    <script src="./map.js"></script>
+  </body>
+</html>
