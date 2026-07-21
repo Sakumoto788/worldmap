@@ -825,10 +825,10 @@
 
         @media (max-width: 480px) {
             .game-button-grid {
-                gap: 4px 6px;
-                bottom: 2%;         /* 更贴近底部 */
-                right: 4%;
-                width: 65%;         /* 更宽，按钮更大 */
+                gap: 4px 8px;
+                bottom: 4%;
+                right: 5%;
+                width: 52%;
             }
             .game-action-btn:hover {
                 transform: none;
@@ -840,18 +840,19 @@
         }
 
         /* ==========================================================
-           ★ 世界地图模态框（手机适配优化） ★
+           ★ 世界地图模态框（新增） ★
            ========================================================== */
         .map-modal-inner {
             max-width: 1400px;
             padding: 0;
-            background: #070a10;
+            background: #070a10;  /* 与地图页背景一致 */
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(255, 215, 120, 0.15);
             box-shadow: 0 20px 80px rgba(0, 0, 0, 0.9);
         }
 
+        /* 让地图内容填满模态框 */
         .map-modal-inner .world-shell {
             width: 100%;
             height: 100%;
@@ -863,6 +864,7 @@
             color: #c5c8d4;
         }
 
+        /* 确保地图内的按钮等交互正常 */
         .map-modal-inner .map-viewport {
             width: 100%;
             height: 65vh;
@@ -873,6 +875,7 @@
             overflow: hidden;
         }
 
+        /* 地图内部样式微调，适应模态框 */
         .map-modal-inner .topbar {
             display: flex;
             justify-content: space-between;
@@ -929,6 +932,7 @@
             color: #7a7f8f;
         }
 
+        /* 地图内部的控件按钮重设背景 */
         .map-modal-inner .map-controls button {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 215, 120, 0.2);
@@ -939,123 +943,6 @@
         }
         .map-modal-inner .map-controls button:hover {
             background: rgba(255, 215, 120, 0.15);
-        }
-
-        /* --- 手机端地图适配 --- */
-        @media (max-width: 768px) {
-            .map-modal-inner .world-shell {
-                padding: 0.8rem;
-            }
-            .map-modal-inner .map-viewport {
-                height: 50vh;
-                min-height: 300px;
-            }
-            .map-modal-inner .brand-name { font-size: 1.1rem; }
-        }
-
-        @media (max-width: 480px) {
-            .map-modal-inner .world-shell {
-                padding: 0.5rem;
-                max-height: 90vh;
-                min-height: 60vh;
-            }
-            .map-modal-inner .map-viewport {
-                height: 55vh;          /* 提高高度，让地图更突出 */
-                min-height: 280px;
-            }
-            .map-modal-inner .brand-name { font-size: 1rem; }
-            .map-modal-inner .brand-en { display: none; }  /* 隐藏英文，节省空间 */
-            .map-modal-inner .chapter-state {
-                font-size: 0.6rem;
-                text-align: left;
-                width: 100%;
-                margin-top: 0.2rem;
-            }
-            .map-modal-inner .map-heading h1 { font-size: 1.4rem; }
-            .map-modal-inner .map-heading p { font-size: 0.7rem; }
-            .map-modal-inner .topbar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.2rem;
-            }
-
-            /* 地图控件纵向排列，避免重叠 */
-            .map-modal-inner .map-controls {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 4px;
-                position: absolute;
-                bottom: 10px;
-                right: 10px;
-                z-index: 20;
-                background: rgba(0,0,0,0.5);
-                padding: 4px 6px;
-                border-radius: 6px;
-            }
-            .map-modal-inner .map-controls button {
-                font-size: 0.9rem;
-                padding: 2px 8px;
-            }
-            .map-modal-inner .map-controls #zoomValue {
-                font-size: 0.7rem;
-                color: #ccc;
-                padding: 0 4px;
-            }
-            .map-modal-inner .layer-controls {
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                z-index: 20;
-                background: rgba(0,0,0,0.5);
-                padding: 4px 8px;
-                border-radius: 6px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 6px;
-                font-size: 0.6rem;
-                color: #a0a8b8;
-            }
-            .map-modal-inner .layer-controls button {
-                background: transparent;
-                border: 1px solid rgba(255,215,120,0.2);
-                color: #c5c8d4;
-                border-radius: 3px;
-                padding: 1px 6px;
-                font-size: 0.6rem;
-                cursor: pointer;
-            }
-            .map-modal-inner .compass {
-                display: none;  /* 小屏隐藏罗盘，节省空间 */
-            }
-            .map-modal-inner .map-legend {
-                position: absolute;
-                bottom: 50px;
-                left: 10px;
-                z-index: 20;
-                background: rgba(0,0,0,0.6);
-                padding: 4px 8px;
-                border-radius: 6px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 6px 12px;
-                font-size: 0.55rem;
-                color: #a0a8b8;
-            }
-            .map-modal-inner .map-legend span {
-                display: flex;
-                align-items: center;
-                gap: 4px;
-            }
-            .map-modal-inner .map-legend i {
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-            }
-            .legend-explored { background: #5a8a5a; }
-            .legend-current { background: #f0c860; }
-            .legend-danger { background: #c05050; }
-            .legend-unknown { background: #888; }
         }
 
         /* ==========================================================
@@ -1079,6 +966,9 @@
             #bgToggleBtn { width: 32px; height: 32px; font-size: 0.9rem; bottom: 1.2rem; left: 1.2rem; }
             .cg-controls { gap: 0.5rem; }
             .cg-time { min-width: 60px; font-size: 0.7rem; }
+            .map-modal-inner .world-shell { padding: 0.8rem; }
+            .map-modal-inner .map-viewport { height: 50vh; min-height: 300px; }
+            .map-modal-inner .brand-name { font-size: 1.1rem; }
         }
 
         @media (max-width: 480px) {
@@ -1111,6 +1001,10 @@
             .cg-controls input[type="range"]::-webkit-slider-thumb { width: 12px; height: 12px; }
             .world-title { font-size: 1.2rem; }
             .world-hint { font-size: 0.6rem; }
+            .map-modal-inner .world-shell { padding: 0.5rem; }
+            .map-modal-inner .map-viewport { height: 40vh; min-height: 250px; }
+            .map-modal-inner .brand-name { font-size: 1rem; }
+            .map-modal-inner .chapter-state { font-size: 0.65rem; }
         }
 
         /* ===== 视频降级 ===== */
@@ -1159,6 +1053,7 @@
             <button class="btn-common" id="openCgModal">✦ 剧情CG欣赏 ✦</button>
             <button class="btn-common" id="openWorldModal">✦ 世界观 ✦</button>
             <button class="btn-common" id="openGameModal">✦ 游戏简介 ✦</button>
+            <!-- ★ 新增：世界地图 ★ -->
             <button class="btn-common" id="openWorldMapModal">✦ 世界地图 ✦</button>
         </div>
     </div>
@@ -1885,6 +1780,9 @@
 
             function openWorldMapModalFn() {
                 worldMapModal.classList.add('active');
+                // 如果地图脚本需要重新初始化，可以在这里触发
+                // 例如：window.dispatchEvent(new Event('resize'));
+                // 或者调用地图的刷新方法（如果有）
                 console.log('世界地图已打开');
             }
 
@@ -1937,7 +1835,7 @@
                 }
             });
 
-            console.log('✦ 诸天纪元 · 全部功能（含手机适配优化）加载完成 ✦');
+            console.log('✦ 诸天纪元 · 全部功能（含世界地图）加载完成 ✦');
             console.log('★ 作者：老九门 ★');
 
         })();
