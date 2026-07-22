@@ -1,7 +1,7 @@
 (function () {
   window.ZHUTIAN_MAP_MEDIA = {
-    sceneBasePath: "03_网站WebP/点位小场景",
-    battleBasePath: "03_网站WebP/正史战斗CG",
+    sceneBasePath: "assets/images/scenes",
+    battleBasePath: "assets/images/battles",
     locations: {
       qingshi: { scene: "01_青石村.webp", battles: [] },
       crater: { scene: "02_后山陨星坑.webp", battles: [] },
