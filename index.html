@@ -6,10 +6,10 @@
     <title>诸天纪元 · 主界面</title>
 
     <!-- ===== 引入世界地图的样式和脚本（确保这些文件与主页面同目录） ===== -->
-    <link rel="stylesheet" href="./map.css" />
-    <script src="./map-data.js" defer></script>
-    <script src="./map-media-data.js" defer></script>
-    <script src="./map.js" defer></script>
+    <link rel="stylesheet" href="map.css" />
+    <script src="map-data.js" defer></script>
+    <script src="map-media-data.js" defer></script>
+    <script src="map.js" defer></script>
 
     <style>
         /* ===== 全局重置 ===== */
@@ -2182,6 +2182,9 @@
                 worldMapModal.classList.add('active');
                 setTimeout(function() {
                     window.dispatchEvent(new Event('resize'));
+                    if (window.initMap) {
+                        window.initMap();
+                    }
                 }, 100);
                 console.log('世界地图已打开');
             }
