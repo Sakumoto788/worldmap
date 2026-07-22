@@ -8,7 +8,6 @@
     <!-- ===== 引入世界地图的样式和脚本（确保这些文件与主页面同目录） ===== -->
     <link rel="stylesheet" href="./map.css" />
     <script src="./map-data.js" defer></script>
-    <script src="./map-media-data.js" defer></script>
     <script src="./map.js" defer></script>
 
     <style>
@@ -647,64 +646,37 @@
         }
         .cg-controls input[type="range"] {
             flex: 1;
-            height: 6px;
+            height: 4px;
             -webkit-appearance: none;
             appearance: none;
-            background: linear-gradient(90deg, rgba(255,215,120,0.15), rgba(255,215,120,0.05));
-            border-radius: 3px;
+            background: rgba(255,215,120,0.2);
+            border-radius: 4px;
             outline: none;
+            transition: background 0.2s;
             cursor: pointer;
-            position: relative;
-        }
-        .cg-controls input[type="range"]::-webkit-slider-runnable-track {
-            height: 6px;
-            border-radius: 3px;
-            background: linear-gradient(90deg, rgba(255,215,120,0.15), rgba(255,215,120,0.05));
         }
         .cg-controls input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ffd700, #ffb800);
-            border: 2px solid rgba(255,215,120,0.4);
+            background: rgba(255,215,120,0.8);
+            border: 2px solid rgba(255,215,120,0.3);
             cursor: pointer;
-            margin-top: -6px;
-            box-shadow: 
-                0 0 10px rgba(255,215,120,0.4),
-                0 0 20px rgba(255,215,120,0.2),
-                inset 0 -2px 4px rgba(0,0,0,0.2);
-            transition: all 0.25s ease;
+            transition: 0.2s;
         }
         .cg-controls input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 
-                0 0 15px rgba(255,215,120,0.6),
-                0 0 30px rgba(255,215,120,0.3),
-                inset 0 -2px 4px rgba(0,0,0,0.2);
-        }
-        .cg-controls input[type="range"]::-moz-range-track {
-            height: 6px;
-            border-radius: 3px;
-            background: linear-gradient(90deg, rgba(255,215,120,0.15), rgba(255,215,120,0.05));
-            border: none;
+            background: #ffd700;
+            transform: scale(1.15);
         }
         .cg-controls input[type="range"]::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ffd700, #ffb800);
-            border: 2px solid rgba(255,215,120,0.4);
+            background: rgba(255,215,120,0.8);
+            border: 2px solid rgba(255,215,120,0.3);
             cursor: pointer;
-            box-shadow: 
-                0 0 10px rgba(255,215,120,0.4),
-                0 0 20px rgba(255,215,120,0.2),
-                inset 0 -2px 4px rgba(0,0,0,0.2);
-            transition: all 0.25s ease;
-        }
-        .cg-controls input[type="range"]::-moz-range-thumb:hover {
-            transform: scale(1.2);
         }
         .cg-time {
             font-family: '华文行楷', 'STXingkai', 'KaiTi', cursive;
@@ -921,27 +893,6 @@
             padding: 1rem 1.5rem 1.5rem 1.5rem;
             background: #070a10;
             color: #c5c8d4;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(200, 166, 106, 0.4) rgba(0, 0, 0, 0.2);
-        }
-
-        .map-modal-inner .world-shell::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .map-modal-inner .world-shell::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
-        }
-
-        .map-modal-inner .world-shell::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, rgba(200, 166, 106, 0.5), rgba(200, 166, 106, 0.2));
-            border-radius: 3px;
-            border: 1px solid rgba(200, 166, 106, 0.1);
-        }
-
-        .map-modal-inner .world-shell::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, rgba(200, 166, 106, 0.7), rgba(200, 166, 106, 0.4));
         }
 
         /* 确保地图内的按钮等交互正常 */
@@ -1023,137 +974,6 @@
         }
         .map-modal-inner .map-controls button:hover {
             background: rgba(255, 215, 120, 0.15);
-        }
-
-        .map-modal-inner .drawer-scene-section {
-            margin-top: 16px;
-        }
-        .map-modal-inner .drawer-scene-wrapper {
-            margin-top: 8px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(200, 166, 106, 0.15);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
-        .map-modal-inner .drawer-scene-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .map-modal-inner .drawer-battle-section {
-            margin-top: 20px;
-        }
-        .map-modal-inner .drawer-battle-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 8px;
-        }
-        .map-modal-inner .drawer-battle-item {
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(200, 166, 106, 0.15);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .map-modal-inner .drawer-battle-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
-        }
-        .map-modal-inner .drawer-battle-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .map-modal-inner .drawer-scene-img {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        .map-modal-inner .drawer-scene-img:hover {
-            transform: scale(1.02);
-        }
-
-        /* ==========================================================
-           CG图片放大模态框（Lightbox）样式
-           ========================================================== */
-        .lightbox-overlay {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 2000;
-        }
-        .lightbox-overlay.is-open {
-            opacity: 1;
-            visibility: visible;
-        }
-        .lightbox-inner {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        .lightbox-overlay.is-open .lightbox-inner {
-            transform: scale(1);
-        }
-        .lightbox-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            font-size: 2.5rem;
-            color: rgba(255, 215, 120, 0.8);
-            cursor: pointer;
-            transition: color 0.2s ease, transform 0.2s ease;
-        }
-        .lightbox-close:hover {
-            color: #ffd700;
-            transform: rotate(90deg);
-        }
-        .lightbox-content {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(200, 166, 106, 0.3);
-            box-shadow: 
-                0 0 60px rgba(255, 215, 120, 0.15),
-                0 20px 80px rgba(0, 0, 0, 0.8);
-        }
-        #lightboxImg {
-            max-width: 90vw;
-            max-height: 85vh;
-            width: auto;
-            height: auto;
-            display: block;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .lightbox-overlay.is-open #lightboxImg {
-            opacity: 1;
-        }
-        .lightbox-caption {
-            margin-top: 16px;
-            padding: 8px 24px;
-            background: rgba(200, 166, 106, 0.1);
-            border-radius: 6px;
-            color: rgba(200, 166, 106, 0.8);
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease 0.2s, transform 0.3s ease 0.2s;
-        }
-        .lightbox-overlay.is-open .lightbox-caption {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* ==========================================================
@@ -1638,19 +1458,6 @@
                     <aside id="locationDrawer" class="location-drawer" aria-live="polite"></aside>
                 </section>
             </main>
-        </div>
-    </div>
-
-    <!-- ==========================================================
-    ★ CG图片放大模态框（Lightbox） ★
-    ========================================================== -->
-    <div class="modal-overlay lightbox-overlay" id="cgLightbox">
-        <div class="lightbox-inner">
-            <span class="modal-close lightbox-close" id="closeCgLightbox">✕</span>
-            <div class="lightbox-content" id="lightboxContent">
-                <img id="lightboxImg" src="" alt="" />
-            </div>
-            <div class="lightbox-caption" id="lightboxCaption"></div>
         </div>
     </div>
 
@@ -2206,9 +2013,9 @@
 
             function openWorldMapModalFn() {
                 worldMapModal.classList.add('active');
-                setTimeout(function() {
-                    window.dispatchEvent(new Event('resize'));
-                }, 100);
+                // 如果地图脚本需要重新初始化，可以在这里触发
+                // 例如：window.dispatchEvent(new Event('resize'));
+                // 或者调用地图的刷新方法（如果有）
                 console.log('世界地图已打开');
             }
 
@@ -2227,37 +2034,7 @@
                 if (e.target === worldMapModal) closeWorldMapModalFn();
             });
 
-            // ---------- ★ CG图片放大（Lightbox）控制 ★ ----------
-            const cgLightbox = document.getElementById('cgLightbox');
-            const closeCgLightboxBtn = document.getElementById('closeCgLightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
-            const lightboxCaption = document.getElementById('lightboxCaption');
-
-            window.openLightbox = function(imgSrc, caption) {
-                lightboxImg.src = imgSrc;
-                lightboxCaption.textContent = caption;
-                cgLightbox.classList.add('is-open');
-                document.body.style.overflow = 'hidden';
-            };
-
-            function closeCgLightboxFn() {
-                cgLightbox.classList.remove('is-open');
-                document.body.style.overflow = '';
-            }
-
-            closeCgLightboxBtn.addEventListener('click', closeCgLightboxFn);
-
-            cgLightbox.addEventListener('click', function(e) {
-                if (e.target === cgLightbox) closeCgLightboxFn();
-            });
-
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && cgLightbox.classList.contains('is-open')) {
-                    closeCgLightboxFn();
-                }
-            });
-
-            // ---------- ★ 玩法详情控制 ★ ----------
+            // ---------- ★ 玩法详情模态框控制（背景切换演示） ★ ----------
             const gameDetailModal = document.getElementById('gameDetailModal');
             const closeGameDetailBtn = document.getElementById('closeGameDetailModal');
             const gameDetailBgContainer = document.getElementById('gameDetailBgContainer');
