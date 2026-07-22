@@ -84,7 +84,6 @@
       button.addEventListener("click", event => {
         event.stopPropagation();
         selectedId = location.id;
-        document.getElementById("gestureGuide").hidden = true;
         renderMarkers();
         renderDrawer();
       });
@@ -137,17 +136,19 @@
     drawer.className = "location-drawer is-open";
     drawer.innerHTML = `
       <button class="drawer-close" type="button" aria-label="关闭地点档案">×</button>
-      <div class="drawer-index">LOC / ${index}</div>
-      <div class="drawer-status-line"><span class="drawer-status drawer-status--${selected.status}">${statusLabel[selected.status]}</span><span>${selected.confidence}</span></div>
-      <p class="drawer-subtitle">${selected.subtitle}</p>
-      <h2>${selected.name}</h2>
-      <div class="drawer-rule"><i></i></div>
-      ${sceneHtml}
-      <p class="drawer-description">${selected.description}</p>
-      <div class="drawer-events"><span class="drawer-label">关键记录</span><div>${selected.events.map(item => `<span>${item}</span>`).join("")}</div></div>
-      ${battleHtml}
-      ${selected.note ? `<div class="canon-note"><span>连续性备注</span><p>${selected.note}</p></div>` : ""}
-      <div class="drawer-footer"><span>正史记录</span><strong>${selected.status === "current" ? "实时更新中" : "档案已收录"}</strong></div>`;
+      <div class="drawer-scroll-container">
+        <div class="drawer-index">LOC / ${index}</div>
+        <div class="drawer-status-line"><span class="drawer-status drawer-status--${selected.status}">${statusLabel[selected.status]}</span><span>${selected.confidence}</span></div>
+        <p class="drawer-subtitle">${selected.subtitle}</p>
+        <h2>${selected.name}</h2>
+        <div class="drawer-rule"><i></i></div>
+        ${sceneHtml}
+        <p class="drawer-description">${selected.description}</p>
+        <div class="drawer-events"><span class="drawer-label">关键记录</span><div>${selected.events.map(item => `<span>${item}</span>`).join("")}</div></div>
+        ${battleHtml}
+        ${selected.note ? `<div class="canon-note"><span>连续性备注</span><p>${selected.note}</p></div>` : ""}
+        <div class="drawer-footer"><span>正史记录</span><strong>${selected.status === "current" ? "实时更新中" : "档案已收录"}</strong></div>
+      </div>`;
     drawer.querySelector(".drawer-close").addEventListener("click", () => {
       selectedId = "";
       renderMarkers();
@@ -225,7 +226,6 @@
   document.getElementById("zoomIn").addEventListener("click", () => { const c = viewportCenter(); zoomAt(c.x, c.y, view.scale * 1.2); });
   document.getElementById("zoomOut").addEventListener("click", () => { const c = viewportCenter(); zoomAt(c.x, c.y, view.scale * 0.82); });
   document.getElementById("resetView").addEventListener("click", () => { view = { scale: 1, x: 0, y: 0 }; applyView(); });
-  document.getElementById("gestureGuide").addEventListener("click", event => { event.currentTarget.hidden = true; });
   document.getElementById("toggleRoutes").addEventListener("click", event => {
     showRoutes = !showRoutes; routeLayer.hidden = !showRoutes;
     event.currentTarget.classList.toggle("is-on", showRoutes); event.currentTarget.setAttribute("aria-pressed", String(showRoutes));
@@ -236,8 +236,40 @@
   });
   window.addEventListener("resize", () => { view = clampView(view); applyView(); });
 
-  renderFilters();
-  renderMarkers();
-  renderDrawer();
-  applyView();
+  let drawerDrag = null;
+  drawer.addEventListener("pointerdown", event => {
+    if (event.target.tagName === "IMG" || event.target.closest(".drawer-close")) return;
+    const scrollContainer = drawer.querySelector(".drawer-scroll-container");
+    drawerDrag = { startY: event.clientY, startScrollTop: scrollContainer ? scrollContainer.scrollTop : 0 };
+    drawer.style.cursor = "grabbing";
+    event.preventDefault();
+  });
+
+  document.addEventListener("pointermove", event => {
+    if (!drawerDrag) return;
+    const scrollContainer = drawer.querySelector(".drawer-scroll-container");
+    if (scrollContainer) {
+      const deltaY = event.clientY - drawerDrag.startY;
+      scrollContainer.scrollTop = drawerDrag.startScrollTop - deltaY;
+    }
+  });
+
+  document.addEventListener("pointerup", () => {
+    drawerDrag = null;
+    drawer.style.cursor = "";
+  });
+
+  document.addEventListener("pointercancel", () => {
+    drawerDrag = null;
+    drawer.style.cursor = "";
+  });
+
+  function initMap() {
+    renderFilters();
+    renderMarkers();
+    renderDrawer();
+    applyView();
+  }
+
+  window.initMap = initMap;
 })();

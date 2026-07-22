@@ -716,12 +716,13 @@ button:focus-visible,
 .location-drawer {
   position: absolute;
   z-index: 36;
-  top: 0;
+  top: 60px;
   right: 34px;
-  bottom: 34px;
+  bottom: 60px;
   width: min(350px, 29vw);
+  max-height: calc(100vh - 120px);
   padding: 31px 31px 24px;
-  overflow: auto;
+  overflow: hidden;
   border: 1px solid rgba(200, 166, 106, 0.3);
   border-top-color: rgba(228, 200, 143, 0.7);
   background:
@@ -733,33 +734,19 @@ button:focus-visible,
   transform: translateX(24px);
   transition: 240ms ease;
   backdrop-filter: blur(18px);
-  scrollbar-width: thin;
-  scrollbar-color: rgba(200, 166, 106, 0.4) rgba(0, 0, 0, 0.2);
-}
-
-.location-drawer::-webkit-scrollbar {
-  width: 6px;
-}
-
-.location-drawer::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-}
-
-.location-drawer::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(200, 166, 106, 0.5), rgba(200, 166, 106, 0.2));
-  border-radius: 3px;
-  border: 1px solid rgba(200, 166, 106, 0.1);
-}
-
-.location-drawer::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(200, 166, 106, 0.7), rgba(200, 166, 106, 0.4));
 }
 
 .location-drawer.is-open {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(0);
+  cursor: grab;
+}
+
+.drawer-scroll-container {
+  height: 100%;
+  overflow: auto;
+  padding-right: 16px;
 }
 
 .location-drawer::before,
