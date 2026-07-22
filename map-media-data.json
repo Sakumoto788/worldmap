@@ -1,0 +1,141 @@
+{
+  "version": "1.0",
+  "sceneBasePath": "03_网站WebP/点位小场景",
+  "battleBasePath": "03_网站WebP/正史战斗CG",
+  "locations": {
+    "qingshi": {
+      "name": "青石村",
+      "scene": "01_青石村.webp",
+      "status": "explored",
+      "battleIds": []
+    },
+    "crater": {
+      "name": "后山陨星坑",
+      "scene": "02_后山陨星坑.webp",
+      "status": "explored",
+      "battleIds": [],
+      "continuity": "青铜匣与黑金骨钉的唯一起点。"
+    },
+    "ancestral": {
+      "name": "枯井 · 祖碑",
+      "scene": "03_枯井_祖碑.webp",
+      "status": "explored",
+      "battleIds": ["ancestral-han"]
+    },
+    "han": {
+      "name": "韩家废院",
+      "scene": "04_韩家废院.webp",
+      "status": "explored",
+      "battleIds": []
+    },
+    "xuantian-post": {
+      "name": "玄天废驿",
+      "scene": "05_玄天废驿.webp",
+      "status": "explored",
+      "battleIds": ["xuantian-puppets"],
+      "continuity": "已经探索完成，不是待进入地点。"
+    },
+    "liuyun": {
+      "name": "流云坊",
+      "scene": "06_流云坊.webp",
+      "status": "explored",
+      "battleIds": [],
+      "continuity": "幸格在此亲自买回无铭旧剑。"
+    },
+    "camp": {
+      "name": "乱石沟营地",
+      "scene": "07_乱石沟营地.webp",
+      "status": "explored",
+      "battleIds": ["camp-locust", "outside-account-hunters"]
+    },
+    "kiln": {
+      "name": "旧陶窑灰账房",
+      "scene": "08_旧陶窑灰账房.webp",
+      "status": "explored",
+      "battleIds": []
+    },
+    "bridge": {
+      "name": "西河破桥",
+      "scene": "09_西河破桥.webp",
+      "status": "explored",
+      "battleIds": []
+    },
+    "mine": {
+      "name": "北矿",
+      "scene": "10_北矿.webp",
+      "status": "explored",
+      "battleIds": []
+    },
+    "west-well": {
+      "name": "西井点户主册室",
+      "scene": "11_西井点户主册室.webp",
+      "status": "explored",
+      "battleIds": ["west-well-page-swap"]
+    },
+    "old-outpost": {
+      "name": "玄天旧哨站",
+      "scene": "12_玄天旧哨站_当前.webp",
+      "status": "current",
+      "battleIds": []
+    },
+    "blackwind": {
+      "name": "黑风山北麓",
+      "scene": "13_黑风山北麓_危险.webp",
+      "status": "danger",
+      "battleIds": [],
+      "continuity": "已识别为灰账陷阱，尚未进入；不预设敌人数与阵眼。"
+    },
+    "outer-patrol": {
+      "name": "玄天宗外巡方向",
+      "scene": "14_玄天宗外巡方向_未确认.webp",
+      "status": "unverified",
+      "battleIds": [],
+      "continuity": "尚未确认安全、敌对或是否可抵达。"
+    }
+  },
+  "battles": {
+    "ancestral-han": {
+      "name": "祖碑大战韩照 · 五人破血誓",
+      "image": "01_祖碑大战韩照_五人破血誓.webp",
+      "mapAnchor": "ancestral",
+      "participants": ["幸格", "史迪", "晨曦", "雪月", "阿怪"],
+      "enemy": "韩照",
+      "result": "五人联手斩断核心血誓线；韩照重伤遁逃，仍然存活。"
+    },
+    "xuantian-puppets": {
+      "name": "玄天废驿 · 巡夜尸傀战",
+      "image": "02_玄天废驿_巡夜尸傀战.webp",
+      "mapAnchor": "xuantian-post",
+      "participants": ["幸格", "史迪", "晨曦", "生枫"],
+      "enemy": "八具巡夜尸傀与控尸誓线",
+      "result": "队伍处理巡夜旧阵并完成取旧录阶段；阿怪、雪月未加入此战。"
+    },
+    "camp-locust": {
+      "name": "乱石沟营地 · 槐甲账兵袭营",
+      "image": "03_乱石沟营地_槐甲账兵袭营.webp",
+      "mapAnchor": "camp",
+      "participants": ["幸格", "史迪", "晨曦", "阿怪", "雪月", "生枫"],
+      "enemy": "重刃型与灰钩型槐甲账兵",
+      "result": "史迪击毁重刃型；生枫射中灰钩型芯绳但未射断；幸格左肩中度撕裂。"
+    },
+    "outside-account-hunters": {
+      "name": "乱石沟外 · 追户者遭遇",
+      "image": "04_乱石沟外_追户者遭遇.webp",
+      "mapAnchor": "camp",
+      "exactLocation": "乱石沟外",
+      "participants": ["幸格", "史迪", "生枫"],
+      "protectedNpc": "周守山",
+      "enemy": "追户者与灰纸户犬",
+      "result": "幸格护住周守山并斩碎扑向生枫的户犬；生枫切断追踪空节点；史迪拦住另一只户犬并中空户印。"
+    },
+    "west-well-page-swap": {
+      "name": "西井主册室 · 换页之战",
+      "image": "05_西井主册室_换页之战.webp",
+      "mapAnchor": "west-well",
+      "participants": ["幸格", "史迪", "生枫"],
+      "protectedNpc": "青石村村长",
+      "enemy": "记户吏",
+      "result": "主动三人组救出村长并脱离；记户吏是否死亡、户脊核及芯件去向仍待结算。"
+    }
+  }
+}

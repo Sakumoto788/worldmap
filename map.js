@@ -100,6 +100,40 @@
       return;
     }
     const index = String(locations.indexOf(selected) + 1).padStart(2, "0");
+    const mediaData = window.ZHUTIAN_MAP_MEDIA;
+    const locationMedia = mediaData && mediaData.locations ? mediaData.locations[selected.id] : null;
+    
+    let sceneHtml = "";
+    if (locationMedia && locationMedia.scene) {
+      const scenePath = `${mediaData.sceneBasePath}/${locationMedia.scene}`;
+      sceneHtml = `
+        <div class="drawer-scene-section">
+          <span class="drawer-label">场景图</span>
+          <div class="drawer-scene-wrapper">
+            <img class="drawer-scene-img" src="${scenePath}" alt="${selected.name}场景" onclick="openLightbox('${scenePath}', '${selected.name}场景')" />
+          </div>
+        </div>`;
+    }
+    
+    let battleHtml = "";
+    if (locationMedia && locationMedia.battles && locationMedia.battles.length > 0) {
+      const battleItems = locationMedia.battles.map(battleId => {
+        const battle = mediaData.battles[battleId];
+        if (!battle) return "";
+        const battlePath = `${mediaData.battleBasePath}/${battle.image}`;
+        const battleName = battle.name || battleId;
+        return `
+          <div class="drawer-battle-item">
+            <img class="drawer-battle-img" src="${battlePath}" alt="${battleName}" onclick="openLightbox('${battlePath}', '${battleName}')" />
+          </div>`;
+      }).join("");
+      battleHtml = `
+        <div class="drawer-battle-section">
+          <span class="drawer-label">正史战斗CG</span>
+          <div class="drawer-battle-grid">${battleItems}</div>
+        </div>`;
+    }
+    
     drawer.className = "location-drawer is-open";
     drawer.innerHTML = `
       <button class="drawer-close" type="button" aria-label="关闭地点档案">×</button>
@@ -108,8 +142,10 @@
       <p class="drawer-subtitle">${selected.subtitle}</p>
       <h2>${selected.name}</h2>
       <div class="drawer-rule"><i></i></div>
+      ${sceneHtml}
       <p class="drawer-description">${selected.description}</p>
       <div class="drawer-events"><span class="drawer-label">关键记录</span><div>${selected.events.map(item => `<span>${item}</span>`).join("")}</div></div>
+      ${battleHtml}
       ${selected.note ? `<div class="canon-note"><span>连续性备注</span><p>${selected.note}</p></div>` : ""}
       <div class="drawer-footer"><span>正史记录</span><strong>${selected.status === "current" ? "实时更新中" : "档案已收录"}</strong></div>`;
     drawer.querySelector(".drawer-close").addEventListener("click", () => {

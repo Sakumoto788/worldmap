@@ -716,9 +716,9 @@ button:focus-visible,
 .location-drawer {
   position: absolute;
   z-index: 36;
-  top: 28px;
+  top: 0;
   right: 34px;
-  bottom: 118px;
+  bottom: 34px;
   width: min(350px, 29vw);
   padding: 31px 31px 24px;
   overflow: auto;
@@ -733,6 +733,27 @@ button:focus-visible,
   transform: translateX(24px);
   transition: 240ms ease;
   backdrop-filter: blur(18px);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 166, 106, 0.4) rgba(0, 0, 0, 0.2);
+}
+
+.location-drawer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.location-drawer::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.location-drawer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(200, 166, 106, 0.5), rgba(200, 166, 106, 0.2));
+  border-radius: 3px;
+  border: 1px solid rgba(200, 166, 106, 0.1);
+}
+
+.location-drawer::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(200, 166, 106, 0.7), rgba(200, 166, 106, 0.4));
 }
 
 .location-drawer.is-open {
