@@ -845,11 +845,42 @@
         .map-modal-inner {
             max-width: 1400px;
             padding: 0;
-            background: #070a10;  /* 与地图页背景一致 */
+            background: #070a10;
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(255, 215, 120, 0.15);
             box-shadow: 0 20px 80px rgba(0, 0, 0, 0.9);
+            position: relative;
+        }
+
+        .map-modal-inner .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: rgba(255, 215, 120, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            line-height: 1;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 215, 120, 0.2);
+            backdrop-filter: blur(4px);
+        }
+
+        .map-modal-inner .modal-close:hover {
+            color: #ffd700;
+            background: rgba(255, 215, 120, 0.15);
+            border-color: rgba(255, 215, 120, 0.5);
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 215, 120, 0.3);
         }
 
         /* 让地图内容填满模态框 */
@@ -969,6 +1000,26 @@
             .map-modal-inner .world-shell { padding: 0.8rem; }
             .map-modal-inner .map-viewport { height: 50vh; min-height: 300px; }
             .map-modal-inner .brand-name { font-size: 1.1rem; }
+            .map-modal-inner .brand-en { font-size: 0.65rem; }
+            .map-modal-inner .chapter-state { font-size: 0.7rem; }
+            .map-modal-inner .map-heading h1 { font-size: 1.3rem; }
+            .map-modal-inner .map-heading p { font-size: 0.75rem; }
+            .map-modal-inner .map-heading .eyebrow { font-size: 0.65rem; }
+            .map-modal-inner .topbar { padding-bottom: 0.5rem; margin-bottom: 0.8rem; }
+            .map-modal-inner .map-controls button { padding: 3px 8px; font-size: 0.8rem; }
+            .map-modal-inner .layer-controls span { font-size: 0.7rem; }
+            .map-modal-inner .layer-controls button { font-size: 0.7rem; }
+            .map-modal-inner .map-legend span { font-size: 0.65rem; }
+            .map-modal-inner .compass { display: none; }
+            .map-modal-inner .modal-close {
+                width: 44px;
+                height: 44px;
+                font-size: 2rem;
+                top: 12px;
+                right: 12px;
+                background: rgba(0, 0, 0, 0.6);
+                border-width: 2px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1005,6 +1056,16 @@
             .map-modal-inner .map-viewport { height: 40vh; min-height: 250px; }
             .map-modal-inner .brand-name { font-size: 1rem; }
             .map-modal-inner .chapter-state { font-size: 0.65rem; }
+            .map-modal-inner .brand-en { font-size: 0.55rem; }
+            .map-modal-inner .map-heading h1 { font-size: 1.1rem; }
+            .map-modal-inner .map-heading p { font-size: 0.65rem; }
+            .map-modal-inner .map-heading .eyebrow { font-size: 0.55rem; }
+            .map-modal-inner .topbar { flex-direction: column; align-items: flex-start; gap: 0.3rem; padding-bottom: 0.3rem; margin-bottom: 0.5rem; }
+            .map-modal-inner .chapter-state { text-align: left; }
+            .map-modal-inner .map-controls button { padding: 2px 6px; font-size: 0.7rem; }
+            .map-modal-inner .layer-controls { display: none; }
+            .map-modal-inner .map-legend { display: none; }
+            .map-modal-inner .filter-rail { display: none; }
         }
 
         /* ===== 视频降级 ===== */
